@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./src/favicon.ico">
+    <title>React App</title>
+  </head>
+  <body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
+    <script>
+    if (annyang) {
+      // Add our commands to annyang
+      annyang.addCommands({
+        'what\'s the weather in *location': function(location) {
+          console.log('Weather for: ', location);
+          console.log('SpeechKITT', SpeechKITT)
+          SpeechKITT.abortRecognition()
+        }
+      });
+
+      // Tell KITT to use annyang
+      SpeechKITT.annyang();
+
+      SpeechKITT.setInstructionsText('How can I help today?')
+      SpeechKITT.setStartCommand(annyang.start);
+      SpeechKITT.displayRecognizedSentence = true;
+
+      // Define a stylesheet for KITT to use
+      SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat-pomegranate.css');
+
+      // Render KITT's interface
+      SpeechKITT.render();
+    }
+    </script>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` in this folder.
+      To create a production bundle, use `npm run build`.
+    -->
+  </body>
+</html>
