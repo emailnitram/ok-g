@@ -10,29 +10,9 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.4.0/annyang.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/speechkitt.min.js"></script>
     <script>
-    if (annyang) {
-      // Add our commands to annyang
-      annyang.addCommands({
-        'what\'s the weather in *location': function(location) {
-          console.log('Weather for: ', location);
-          console.log('SpeechKITT', SpeechKITT)
-          SpeechKITT.abortRecognition()
-        }
-      });
 
-      // Tell KITT to use annyang
-      SpeechKITT.annyang();
+      
 
-      SpeechKITT.setInstructionsText('How can I help today?')
-      SpeechKITT.setStartCommand(annyang.start);
-      SpeechKITT.displayRecognizedSentence = true;
-
-      // Define a stylesheet for KITT to use
-      SpeechKITT.setStylesheet('//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/0.3.0/themes/flat-pomegranate.css');
-
-      // Render KITT's interface
-      SpeechKITT.render();
-    }
     </script>
     <div id="root"></div>
     <!--
